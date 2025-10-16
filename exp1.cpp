@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// ==================== ¹¦ÄÜ1£º¸´ÊıÔËËãºÍÅÅĞò ====================
+// ==================== åŠŸèƒ½1ï¼šå¤æ•°è¿ç®—å’Œæ’åº ====================
 
 class Complex {
 private:
@@ -65,7 +65,7 @@ Vector<Complex> findComplexByModulus(const Vector<Complex>& vec, double m1, doub
     return result;
 }
 
-// ==================== ¹¦ÄÜ2£º±í´ïÊ½¼ÆËãÆ÷ ====================
+// ==================== åŠŸèƒ½2ï¼šè¡¨è¾¾å¼è®¡ç®—å™¨ ====================
 
 #define N_OPTR 9
 typedef enum { ADD, SUB, MUL, DIV, POW, FAC, L_P, R_P, EOE } Operator;
@@ -122,7 +122,7 @@ double calculate(double a, char op, double b = 0) {
     }
 }
 
-// ÊıÑ§º¯Êı¼ÆËã
+// æ•°å­¦å‡½æ•°è®¡ç®—
 double calculateMathFunction(const string& func, double arg) {
     if (func == "sin") return sin(arg);
     if (func == "cos") return cos(arg);
@@ -151,21 +151,21 @@ double evaluateExpression(const string& expression) {
             continue;
         }
 
-        // ¼ì²éÊıÑ§º¯Êı
+        // æ£€æŸ¥æ•°å­¦å‡½æ•°
         if (isalpha(expression[i])) {
             string func;
             while (i < expression.length() && isalpha(expression[i])) {
                 func += expression[i++];
             }
 
-            // Ìø¹ı×óÀ¨ºÅ
+            // è·³è¿‡å·¦æ‹¬å·
             while (i < expression.length() && isspace(expression[i])) i++;
             if (i >= expression.length() || expression[i] != '(') {
                 throw runtime_error("Function call missing opening parenthesis");
             }
-            i++; // Ìø¹ı '('
+            i++; // è·³è¿‡ '('
 
-            // ½âÎö²ÎÊı
+            // è§£æå‚æ•°
             string argStr;
             int parenCount = 1;
             while (i < expression.length() && parenCount > 0) {
@@ -182,7 +182,7 @@ double evaluateExpression(const string& expression) {
                 throw runtime_error("Unmatched parentheses in function call");
             }
 
-            // µİ¹é¼ÆËã²ÎÊı
+            // é€’å½’è®¡ç®—å‚æ•°
             double arg = evaluateExpression(argStr);
             double result = calculateMathFunction(func, arg);
             opnd.push(result);
@@ -258,7 +258,7 @@ double evaluateExpression(const string& expression) {
     return opnd.pop();
 }
 
-// ==================== ¹¦ÄÜ3£ºÖù×´Í¼×î´ó¾ØĞÎÃæ»ı ====================
+// ==================== åŠŸèƒ½3ï¼šæŸ±çŠ¶å›¾æœ€å¤§çŸ©å½¢é¢ç§¯ ====================
 
 int largestRectangleArea(Vector<int>& heights) {
     int n = heights.size();
@@ -282,7 +282,7 @@ int largestRectangleArea(Vector<int>& heights) {
     return maxArea;
 }
 
-// ¼òµ¥µÄÃ°ÅİÅÅĞòÊµÏÖ£¨ÒòÎªVectorÖĞµÄbubbleSortÊÇprotected£©
+// ç®€å•çš„å†’æ³¡æ’åºå®ç°ï¼ˆå› ä¸ºVectorä¸­çš„bubbleSortæ˜¯protectedï¼‰
 template <typename T>
 void bubbleSort(Vector<T>& vec, int lo, int hi) {
     if (hi - lo < 2) return;
@@ -299,10 +299,10 @@ void bubbleSort(Vector<T>& vec, int lo, int hi) {
     }
 }
 
-// ==================== ²âÊÔº¯Êı ====================
+// ==================== æµ‹è¯•å‡½æ•° ====================
 
 void testComplexOperations() {
-    cout << "=== ²âÊÔ¸´Êı¹¦ÄÜ ===" << endl;
+    cout << "=== æµ‹è¯•å¤æ•°åŠŸèƒ½ ===" << endl;
 
     Vector<Complex> complexVec;
     srand(static_cast<unsigned int>(time(nullptr)));
@@ -316,113 +316,113 @@ void testComplexOperations() {
     complexVec.insert(complexVec.size(), Complex(1, 1));
     complexVec.insert(complexVec.size(), Complex(1, 1));
 
-    cout << "Ô­Ê¼ÏòÁ¿: ";
+    cout << "åŸå§‹å‘é‡: ";
     for (int i = 0; i < complexVec.size(); i++) {
         cout << complexVec[i] << " ";
     }
     cout << endl;
 
-    // ²âÊÔ²éÕÒ¹¦ÄÜ
+    // æµ‹è¯•æŸ¥æ‰¾åŠŸèƒ½
     Complex target(1, 1);
     int foundIndex = complexVec.find(target);
     if (foundIndex >= 0) {
-        cout << "²éÕÒ¸´Êı(1+1i): ÕÒµ½£¬ÏÂ±êÎª " << foundIndex << endl;
+        cout << "æŸ¥æ‰¾å¤æ•°(1+1i): æ‰¾åˆ°ï¼Œä¸‹æ ‡ä¸º " << foundIndex << endl;
     }
     else {
-        cout << "²éÕÒ¸´Êı(1+1i): Î´ÕÒµ½" << endl;
+        cout << "æŸ¥æ‰¾å¤æ•°(1+1i): æœªæ‰¾åˆ°" << endl;
     }
 
     complexVec.unsort();
-    cout << "ÂÒĞòºó: ";
+    cout << "ä¹±åºå: ";
     for (int i = 0; i < complexVec.size(); i++) {
         cout << complexVec[i] << " ";
     }
     cout << endl;
 
-    // ÔÙ´Î²âÊÔ²éÕÒ
+    // å†æ¬¡æµ‹è¯•æŸ¥æ‰¾
     foundIndex = complexVec.find(target);
     if (foundIndex >= 0) {
-        cout << "ÂÒĞòºó²éÕÒ¸´Êı(1+1i): ÕÒµ½£¬ÏÂ±êÎª " << foundIndex << endl;
+        cout << "ä¹±åºåæŸ¥æ‰¾å¤æ•°(1+1i): æ‰¾åˆ°ï¼Œä¸‹æ ‡ä¸º " << foundIndex << endl;
     }
     else {
-        cout << "ÂÒĞòºó²éÕÒ¸´Êı(1+1i): Î´ÕÒµ½" << endl;
+        cout << "ä¹±åºåæŸ¥æ‰¾å¤æ•°(1+1i): æœªæ‰¾åˆ°" << endl;
     }
 
     complexVec.insert(3, Complex(10, 10));
-    cout << "²åÈëºó´óĞ¡: " << complexVec.size() << endl;
+    cout << "æ’å…¥åå¤§å°: " << complexVec.size() << endl;
 
     complexVec.remove(3);
-    cout << "É¾³ıºó´óĞ¡: " << complexVec.size() << endl;
+    cout << "åˆ é™¤åå¤§å°: " << complexVec.size() << endl;
 
     int removedCount = complexVec.deduplicate();
-    cout << "È¥ÖØºóÉ¾³ı " << removedCount << " ¸öÖØ¸´ÔªËØ" << endl;
+    cout << "å»é‡ååˆ é™¤ " << removedCount << " ä¸ªé‡å¤å…ƒç´ " << endl;
 }
 
 void testSortingPerformance() {
-    cout << "\n=== ²âÊÔÅÅĞòĞÔÄÜ ===" << endl;
+    cout << "\n=== æµ‹è¯•æ’åºæ€§èƒ½ ===" << endl;
 
     const int TEST_SIZE = 500;
 
-    // ´´½¨Ë³Ğò¡¢ÄæĞò¡¢ÂÒĞòÏòÁ¿
+    // åˆ›å»ºé¡ºåºã€é€†åºã€ä¹±åºå‘é‡
     Vector<Complex> sortedVec, reversedVec, randomVec;
 
-    // Ë³ĞòÏòÁ¿
+    // é¡ºåºå‘é‡
     for (int i = 0; i < TEST_SIZE; i++) {
         sortedVec.insert(sortedVec.size(), Complex(i, i));
     }
 
-    // ÄæĞòÏòÁ¿
+    // é€†åºå‘é‡
     for (int i = TEST_SIZE - 1; i >= 0; i--) {
         reversedVec.insert(reversedVec.size(), Complex(i, i));
     }
 
-    // ÂÒĞòÏòÁ¿
+    // ä¹±åºå‘é‡
     for (int i = 0; i < TEST_SIZE; i++) {
         randomVec.insert(randomVec.size(), Complex(i, i));
     }
     randomVec.unsort();
 
-    // ²âÊÔ¹é²¢ÅÅĞòĞÔÄÜ
+    // æµ‹è¯•å½’å¹¶æ’åºæ€§èƒ½
     Vector<Complex> testVec1 = sortedVec;
     clock_t start = clock();
     testVec1.sort();
     clock_t end = clock();
-    cout << "Ë³ĞòÏòÁ¿¹é²¢ÅÅĞòÊ±¼ä: " << (double)(end - start) / CLOCKS_PER_SEC << "Ãë" << endl;
+    cout << "é¡ºåºå‘é‡å½’å¹¶æ’åºæ—¶é—´: " << (double)(end - start) / CLOCKS_PER_SEC << "ç§’" << endl;
 
     Vector<Complex> testVec2 = reversedVec;
     start = clock();
     testVec2.sort();
     end = clock();
-    cout << "ÄæĞòÏòÁ¿¹é²¢ÅÅĞòÊ±¼ä: " << (double)(end - start) / CLOCKS_PER_SEC << "Ãë" << endl;
+    cout << "é€†åºå‘é‡å½’å¹¶æ’åºæ—¶é—´: " << (double)(end - start) / CLOCKS_PER_SEC << "ç§’" << endl;
 
     Vector<Complex> testVec3 = randomVec;
     start = clock();
     testVec3.sort();
     end = clock();
-    cout << "ÂÒĞòÏòÁ¿¹é²¢ÅÅĞòÊ±¼ä: " << (double)(end - start) / CLOCKS_PER_SEC << "Ãë" << endl;
+    cout << "ä¹±åºå‘é‡å½’å¹¶æ’åºæ—¶é—´: " << (double)(end - start) / CLOCKS_PER_SEC << "ç§’" << endl;
 
-    // ²âÊÔÃ°ÅİÅÅĞòĞÔÄÜ£¨Ê¹ÓÃÍâ²¿º¯Êı£©
+    // æµ‹è¯•å†’æ³¡æ’åºæ€§èƒ½ï¼ˆä½¿ç”¨å¤–éƒ¨å‡½æ•°ï¼‰
     Vector<Complex> testVec4 = sortedVec;
     start = clock();
     bubbleSort(testVec4, 0, testVec4.size());
     end = clock();
-    cout << "Ë³ĞòÏòÁ¿Ã°ÅİÅÅĞòÊ±¼ä: " << (double)(end - start) / CLOCKS_PER_SEC << "Ãë" << endl;
+    cout << "é¡ºåºå‘é‡å†’æ³¡æ’åºæ—¶é—´: " << (double)(end - start) / CLOCKS_PER_SEC << "ç§’" << endl;
 
     Vector<Complex> testVec5 = reversedVec;
     start = clock();
     bubbleSort(testVec5, 0, testVec5.size());
     end = clock();
-    cout << "ÄæĞòÏòÁ¿Ã°ÅİÅÅĞòÊ±¼ä: " << (double)(end - start) / CLOCKS_PER_SEC << "Ãë" << endl;
+    cout << "é€†åºå‘é‡å†’æ³¡æ’åºæ—¶é—´: " << (double)(end - start) / CLOCKS_PER_SEC << "ç§’" << endl;
 
     Vector<Complex> testVec6 = randomVec;
     start = clock();
     bubbleSort(testVec6, 0, testVec6.size());
     end = clock();
-    cout << "ÂÒĞòÏòÁ¿Ã°ÅİÅÅĞòÊ±¼ä: " << (double)(end - start) / CLOCKS_PER_SEC << "Ãë" << endl;
+    cout << "ä¹±åºå‘é‡å†’æ³¡æ’åºæ—¶é—´: " << (double)(end - start) / CLOCKS_PER_SEC << "ç§’" << endl;
 }
 
 void testRangeSearch() {
-    cout << "\n=== ²âÊÔ·¶Î§²éÕÒ ===" << endl;
+    cout << "\n=== æµ‹è¯•èŒƒå›´æŸ¥æ‰¾ ===" << endl;
 
     Vector<Complex> complexVec;
     for (int i = 0; i < 10; i++) {
@@ -431,14 +431,14 @@ void testRangeSearch() {
 
     complexVec.sort();
 
-    cout << "ÅÅĞòºóµÄÏòÁ¿: ";
+    cout << "æ’åºåçš„å‘é‡: ";
     for (int i = 0; i < complexVec.size(); i++) {
         cout << complexVec[i] << " ";
     }
     cout << endl;
 
     Vector<Complex> result = findComplexByModulus(complexVec, 3, 7);
-    cout << "Ä£ÔÚ[3, 7)·¶Î§ÄÚµÄ¸´Êı: ";
+    cout << "æ¨¡åœ¨[3, 7)èŒƒå›´å†…çš„å¤æ•°: ";
     for (int i = 0; i < result.size(); i++) {
         cout << result[i] << " ";
     }
@@ -446,7 +446,7 @@ void testRangeSearch() {
 }
 
 void testCalculator() {
-    cout << "\n=== ²âÊÔ±í´ïÊ½¼ÆËãÆ÷ ===" << endl;
+    cout << "\n=== æµ‹è¯•è¡¨è¾¾å¼è®¡ç®—å™¨ ===" << endl;
 
     const char* expressions[] = {
         "2 + 3 * 4",
@@ -470,13 +470,13 @@ void testCalculator() {
             cout << expr << " = " << result << endl;
         }
         catch (const exception& e) {
-            cout << expressions[i] << " -> ´íÎó: " << e.what() << endl;
+            cout << expressions[i] << " -> é”™è¯¯: " << e.what() << endl;
         }
     }
 }
 
 void testLargestRectangle() {
-    cout << "\n=== ²âÊÔÖù×´Í¼×î´ó¾ØĞÎÃæ»ı ===" << endl;
+    cout << "\n=== æµ‹è¯•æŸ±çŠ¶å›¾æœ€å¤§çŸ©å½¢é¢ç§¯ ===" << endl;
 
     srand(static_cast<unsigned int>(time(nullptr)));
 
@@ -484,7 +484,7 @@ void testLargestRectangle() {
         int n = rand() % 10 + 5;
         Vector<int> heights;
 
-        cout << "²âÊÔ" << test << " - Öù¸ßĞòÁĞ: ";
+        cout << "æµ‹è¯•" << test << " - æŸ±é«˜åºåˆ—: ";
         for (int i = 0; i < n; i++) {
             int height = rand() % 10 + 1;
             heights.insert(heights.size(), height);
@@ -492,12 +492,12 @@ void testLargestRectangle() {
         }
 
         int maxArea = largestRectangleArea(heights);
-        cout << "-> ×î´ó¾ØĞÎÃæ»ı: " << maxArea << endl;
+        cout << "-> æœ€å¤§çŸ©å½¢é¢ç§¯: " << maxArea << endl;
     }
 }
 
 int main() {
-    cout << "¿ªÊ¼²âÊÔËùÓĞ¹¦ÄÜ..." << endl;
+    cout << "å¼€å§‹æµ‹è¯•æ‰€æœ‰åŠŸèƒ½..." << endl;
 
     try {
         testComplexOperations();
@@ -507,10 +507,10 @@ int main() {
         testLargestRectangle();
     }
     catch (const exception& e) {
-        cout << "³ÌĞòÔËĞĞ³ö´í: " << e.what() << endl;
+        cout << "ç¨‹åºè¿è¡Œå‡ºé”™: " << e.what() << endl;
         return 1;
     }
 
-    cout << "\nËùÓĞ²âÊÔÍê³É!" << endl;
+    cout << "\næ‰€æœ‰æµ‹è¯•å®Œæˆ!" << endl;
     return 0;
 }
