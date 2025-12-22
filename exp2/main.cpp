@@ -1,14 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <cctype>
-#include "MySTL/MySTL/huffman.h"
+#include "../MySTL/huffman.h"
 
 using namespace std;
 
 string readTextFile(const string& filename) {
     ifstream file(filename);
     if (!file.is_open()) {
-        cerr << "Œﬁ∑®¥Úø™Œƒº˛: " << filename << endl;
+        cerr << "Êó†Ê≥ïÊâìÂºÄÊñá‰ª∂: " << filename << endl;
         return "";
     }
 
@@ -29,54 +29,54 @@ string filterAlphabetic(const string& text) {
 }
 
 int main() {
-    cout << "=== Huffman±‡¬Î µ—È ===" << endl;
+    cout << "=== HuffmanÁºñÁ†ÅÂÆûÈ™å ===" << endl;
 
-    // ≥¢ ‘‘⁄¡Ω∏ˆø…ƒ‹µƒŒª÷√∂¡»°Œƒº˛
+    // Â∞ùËØïÂú®‰∏§‰∏™ÂèØËÉΩÁöÑ‰ΩçÁΩÆËØªÂèñÊñá‰ª∂
     string text = readTextFile("104.txt");
     if (text.empty()) {
         text = readTextFile("MySTL/104.txt");
     }
     if (text.empty()) {
-        cerr << "Œﬁ∑®∂¡»°Œƒ±æŒƒº˛" << endl;
+        cerr << "Êó†Ê≥ïËØªÂèñÊñáÊú¨Êñá‰ª∂" << endl;
         return 1;
     }
 
-    cout << "‘≠ ºŒƒ±æ≥§∂»: " << text.length() << " ∏ˆ◊÷∑˚" << endl;
+    cout << "ÂéüÂßãÊñáÊú¨ÈïøÂ∫¶: " << text.length() << " ‰∏™Â≠óÁ¨¶" << endl;
 
-    // π˝¬À≥ˆ◊÷ƒ∏◊÷∑˚≤¢◊™ªªŒ™–°–¥
+    // ËøáÊª§Âá∫Â≠óÊØçÂ≠óÁ¨¶Âπ∂ËΩ¨Êç¢‰∏∫Â∞èÂÜô
     string filteredText = filterAlphabetic(text);
-    cout << "¥¶¿Ì∫ÛµƒŒƒ±æ≥§∂»: " << filteredText.length() << " ∏ˆ◊÷ƒ∏" << endl;
+    cout << "Â§ÑÁêÜÂêéÁöÑÊñáÊú¨ÈïøÂ∫¶: " << filteredText.length() << " ‰∏™Â≠óÊØç" << endl;
 
     if (filteredText.empty()) {
-        cerr << "π˝¬À∫ÛŒƒ±æŒ™ø’" << endl;
+        cerr << "ËøáÊª§ÂêéÊñáÊú¨‰∏∫Á©∫" << endl;
         return 1;
     }
 
-    // Ω´Œƒ±æ–¥»Î¡Ÿ ±Œƒº˛”√”⁄Õ≥º∆
+    // Â∞ÜÊñáÊú¨ÂÜôÂÖ•‰∏¥Êó∂Êñá‰ª∂Áî®‰∫éÁªüËÆ°
     ofstream temp("temp.txt");
     temp << filteredText;
     temp.close();
 
-    // Õ≥º∆∆µ¬ 
+    // ÁªüËÆ°È¢ëÁéá
     int* freq = statistics("temp.txt");
     if (!freq) {
-        cerr << "∆µ¬ Õ≥º∆ ß∞‹" << endl;
+        cerr << "È¢ëÁéáÁªüËÆ°Â§±Ë¥•" << endl;
         return 1;
     }
 
-    // …˙≥…Huffman ˜
+    // ÁîüÊàêHuffmanÊ†ë
     HuffTree* tree = generateTree(freq);
     if (!tree) {
-        cerr << "…˙≥…Huffman ˜ ß∞‹" << endl;
+        cerr << "ÁîüÊàêHuffmanÊ†ëÂ§±Ë¥•" << endl;
         delete[] freq;
         return 1;
     }
 
-    // …˙≥…±‡¬Î±Ì
+    // ÁîüÊàêÁºñÁ†ÅË°®
     map<char, string> codeTable = generateTable(tree);
 
-    // œ‘ æ≤ø∑÷±‡¬Î±Ì
-    cout << "\n=== ≤ø∑÷Huffman±‡¬Î±Ì ===" << endl;
+    // ÊòæÁ§∫ÈÉ®ÂàÜÁºñÁ†ÅË°®
+    cout << "\n=== ÈÉ®ÂàÜHuffmanÁºñÁ†ÅË°® ===" << endl;
     int count = 0;
     for (const auto& pair : codeTable) {
         if (count++ < 10) {
@@ -84,12 +84,12 @@ int main() {
         }
     }
 
-    // ≤‚ ‘±‡¬Î∫ÕΩ‚¬Î
+    // ÊµãËØïÁºñÁ†ÅÂíåËß£Á†Å
     vector<string> testWords = { "dream", "freedom", "justice", "nation", "brotherhood" };
 
-    cout << "\n=== ±‡¬Î≤‚ ‘ ===" << endl;
+    cout << "\n=== ÁºñÁ†ÅÊµãËØï ===" << endl;
     for (const string& word : testWords) {
-        // Ω´≤‚ ‘µ•¥ ◊™ªªŒ™–°–¥“‘∆•≈‰±‡¬Î±Ì
+        // Â∞ÜÊµãËØïÂçïËØçËΩ¨Êç¢‰∏∫Â∞èÂÜô‰ª•ÂåπÈÖçÁºñÁ†ÅË°®
         string lowercaseWord;
         for (char c : word) {
             lowercaseWord += tolower(c);
@@ -98,31 +98,32 @@ int main() {
         string encoded = encode(codeTable, lowercaseWord);
         string decoded = decode(tree, encoded);
 
-        cout << "µ•¥ : " << word << endl;
-        cout << "±‡¬Î: " << encoded << endl;
-        cout << "Ω‚¬Î: " << decoded << endl;
-        cout << "±‡¬Î≥§∂»: " << encoded.length() << " bits" << endl;
+        cout << "ÂçïËØç: " << word << endl;
+        cout << "ÁºñÁ†Å: " << encoded << endl;
+        cout << "Ëß£Á†Å: " << decoded << endl;
+        cout << "ÁºñÁ†ÅÈïøÂ∫¶: " << encoded.length() << " bits" << endl;
         if (!encoded.empty()) {
-            cout << "—πÀı±»: " << (word.length() * 8.0 / encoded.length()) << ":1" << endl;
+            cout << "ÂéãÁº©ÊØî: " << (word.length() * 8.0 / encoded.length()) << ":1" << endl;
         }
         cout << "---" << endl;
     }
 
-    // º∆À„’˚ÃÂ—πÀı–ßπ˚
+    // ËÆ°ÁÆóÊï¥‰ΩìÂéãÁº©ÊïàÊûú
     string fullEncoded = encode(codeTable, filteredText);
-    cout << "\n=== ’˚ÃÂÕ≥º∆ ===" << endl;
-    cout << "‘≠ ºŒƒ±æ¥Û–°: " << filteredText.length() * 8 << " bits" << endl;
-    cout << "±‡¬Î∫Û¥Û–°: " << fullEncoded.length() << " bits" << endl;
+    cout << "\n=== Êï¥‰ΩìÁªüËÆ° ===" << endl;
+    cout << "ÂéüÂßãÊñáÊú¨Â§ßÂ∞è: " << filteredText.length() * 8 << " bits" << endl;
+    cout << "ÁºñÁ†ÅÂêéÂ§ßÂ∞è: " << fullEncoded.length() << " bits" << endl;
     if (!fullEncoded.empty()) {
-        cout << "—πÀı±»: " << (filteredText.length() * 8.0 / fullEncoded.length()) << ":1" << endl;
+        cout << "ÂéãÁº©ÊØî: " << (filteredText.length() * 8.0 / fullEncoded.length()) << ":1" << endl;
     }
 
-    // «Â¿Ì◊ ‘¥
+    // Ê∏ÖÁêÜËµÑÊ∫ê
     delete[] freq;
     delete tree;
 
-    // …æ≥˝¡Ÿ ±Œƒº˛
+    // Âà†Èô§‰∏¥Êó∂Êñá‰ª∂
     remove("temp.txt");
 
     return 0;
+
 }
