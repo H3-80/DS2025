@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "D:\work and study\person\C++\MySTL\MySTL\Vector.h"
-#include "D:\work and study\person\C++\MySTL\MySTL\Stack.h"
+#include "../MySTL/Vector.h"
+#include "../MySTL/Stack.h"
 
 using namespace std;
 
@@ -341,4 +341,5 @@ int main() {
 
     cout << "\n所有测试完成!" << endl;
     return 0;
+
 }
