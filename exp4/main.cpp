@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <chrono>
-#include "D:\work and study\person\C++\MySTL\MySTL\Vector.h"
-#include "D:\work and study\person\C++\MySTL\MySTL\sort.h"
+#include "../MySTL/Vector.h"
+#include "../MySTL/sort.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -331,4 +331,5 @@ int main() {
     cout << "\n===== 实验完成 =====" << endl;
 
     return 0;
+
 }
