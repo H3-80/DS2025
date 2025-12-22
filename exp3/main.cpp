@@ -3,28 +3,28 @@
 #include <string>
 #include <climits>
 #include <algorithm>
-#include "D:\work and study\person\C++\MySTL\MySTL\Graph.h"
-#include "D:\work and study\person\C++\MySTL\MySTL\ggraph.h"
-#include "D:\work and study\person\C++\MySTL\MySTL\Stack.h"
-#include "D:\work and study\person\C++\MySTL\MySTL\Queue.h"
-#include "D:\work and study\person\C++\MySTL\MySTL\Vector.h"
+#include "../MySTL/Graph.h"
+#include "../MySTL/ggraph.h"
+#include "../MySTL/Stack.h"
+#include "../MySTL/Queue.h"
+#include "../MySTL/Vector.h"
 
 using namespace std;
 
-// Í¼1µÄÊı¾İ - ¸ù¾İÄúÌá¹©µÄÁ¬½ÓĞÅÏ¢ĞŞ¸Ä
+// å›¾1çš„æ•°æ® - æ ¹æ®æ‚¨æä¾›çš„è¿æ¥ä¿¡æ¯ä¿®æ”¹
 void buildGraph1(GraphMatrix<char, int>& graph) {
-    // ²åÈë¶¥µã A-H
+    // æ’å…¥é¡¶ç‚¹ A-H
     vector<int> vertices;
     for (char c = 'A'; c <= 'H'; c++) {
         vertices.push_back(graph.insert(c));
     }
 
-    // ²åÈë±ß£¨ÎŞÏòÍ¼£¬Ã¿¸ö±ß²åÈëÁ½´Î£©
-    // ¸ù¾İÄúÌá¹©µÄĞÅÏ¢£º
+    // æ’å…¥è¾¹ï¼ˆæ— å‘å›¾ï¼Œæ¯ä¸ªè¾¹æ’å…¥ä¸¤æ¬¡ï¼‰
+    // æ ¹æ®æ‚¨æä¾›çš„ä¿¡æ¯ï¼š
     // A-B:4, A-D:6, A-G:7, D-E:13, D-G:2, G-E:11, G-H:14, 
     // B-C:12, E-C:1, E-F:5, E-H:8, C-F:2, C-H:10, F-H:3
 
-    // AµÄ±ß
+    // Açš„è¾¹
     graph.insert(0, 4, vertices[0], vertices[1]); // A-B:4
     graph.insert(0, 4, vertices[1], vertices[0]);
     graph.insert(0, 6, vertices[0], vertices[3]); // A-D:6
@@ -32,11 +32,11 @@ void buildGraph1(GraphMatrix<char, int>& graph) {
     graph.insert(0, 7, vertices[0], vertices[6]); // A-G:7
     graph.insert(0, 7, vertices[6], vertices[0]);
 
-    // BµÄ±ß
+    // Bçš„è¾¹
     graph.insert(0, 12, vertices[1], vertices[2]); // B-C:12
     graph.insert(0, 12, vertices[2], vertices[1]);
 
-    // CµÄ±ß
+    // Cçš„è¾¹
     graph.insert(0, 1, vertices[2], vertices[4]); // C-E:1
     graph.insert(0, 1, vertices[4], vertices[2]);
     graph.insert(0, 2, vertices[2], vertices[5]); // C-F:2
@@ -44,51 +44,51 @@ void buildGraph1(GraphMatrix<char, int>& graph) {
     graph.insert(0, 10, vertices[2], vertices[7]); // C-H:10
     graph.insert(0, 10, vertices[7], vertices[2]);
 
-    // DµÄ±ß
+    // Dçš„è¾¹
     graph.insert(0, 13, vertices[3], vertices[4]); // D-E:13
     graph.insert(0, 13, vertices[4], vertices[3]);
     graph.insert(0, 2, vertices[3], vertices[6]); // D-G:2
     graph.insert(0, 2, vertices[6], vertices[3]);
 
-    // EµÄ±ß
+    // Eçš„è¾¹
     graph.insert(0, 5, vertices[4], vertices[5]); // E-F:5
     graph.insert(0, 5, vertices[5], vertices[4]);
     graph.insert(0, 8, vertices[4], vertices[7]); // E-H:8
     graph.insert(0, 8, vertices[7], vertices[4]);
 
-    // FµÄ±ß
+    // Fçš„è¾¹
     graph.insert(0, 3, vertices[5], vertices[7]); // F-H:3
     graph.insert(0, 3, vertices[7], vertices[5]);
 
-    // GµÄ±ß
+    // Gçš„è¾¹
     graph.insert(0, 11, vertices[6], vertices[4]); // G-E:11
     graph.insert(0, 11, vertices[4], vertices[6]);
     graph.insert(0, 14, vertices[6], vertices[7]); // G-H:14
     graph.insert(0, 14, vertices[7], vertices[6]);
 }
 
-// Í¼2µÄÊı¾İ - ¸ù¾İÄúÌá¹©µÄÁ¬½ÓĞÅÏ¢ĞŞ¸Ä
+// å›¾2çš„æ•°æ® - æ ¹æ®æ‚¨æä¾›çš„è¿æ¥ä¿¡æ¯ä¿®æ”¹
 void buildGraph2(GraphMatrix<char, int>& graph) {
-    // ²åÈë¶¥µã A-L
+    // æ’å…¥é¡¶ç‚¹ A-L
     vector<int> vertices;
     for (char c = 'A'; c <= 'L'; c++) {
         vertices.push_back(graph.insert(c));
     }
 
-    // ¸ù¾İÄúÌá¹©µÄĞÅÏ¢²åÈë±ß£¨ÎŞÏòÍ¼£¬Ã¿Ìõ±ß²åÈëÁ½´Î£©£º
+    // æ ¹æ®æ‚¨æä¾›çš„ä¿¡æ¯æ’å…¥è¾¹ï¼ˆæ— å‘å›¾ï¼Œæ¯æ¡è¾¹æ’å…¥ä¸¤æ¬¡ï¼‰ï¼š
     // A-B, A-E, B-F, C-F, C-H, C-D, D-H, E-F, E-I, F-G, F-J, F-K, F-I, G-K, J-K, K-L
 
-    // AµÄ±ß
+    // Açš„è¾¹
     graph.insert(0, 1, vertices[0], vertices[1]); // A-B
     graph.insert(0, 1, vertices[1], vertices[0]);
     graph.insert(0, 1, vertices[0], vertices[4]); // A-E
     graph.insert(0, 1, vertices[4], vertices[0]);
 
-    // BµÄ±ß
+    // Bçš„è¾¹
     graph.insert(0, 1, vertices[1], vertices[5]); // B-F
     graph.insert(0, 1, vertices[5], vertices[1]);
 
-    // CµÄ±ß
+    // Cçš„è¾¹
     graph.insert(0, 1, vertices[2], vertices[5]); // C-F
     graph.insert(0, 1, vertices[5], vertices[2]);
     graph.insert(0, 1, vertices[2], vertices[7]); // C-H
@@ -96,17 +96,17 @@ void buildGraph2(GraphMatrix<char, int>& graph) {
     graph.insert(0, 1, vertices[2], vertices[3]); // C-D
     graph.insert(0, 1, vertices[3], vertices[2]);
 
-    // DµÄ±ß
+    // Dçš„è¾¹
     graph.insert(0, 1, vertices[3], vertices[7]); // D-H
     graph.insert(0, 1, vertices[7], vertices[3]);
 
-    // EµÄ±ß
+    // Eçš„è¾¹
     graph.insert(0, 1, vertices[4], vertices[5]); // E-F
     graph.insert(0, 1, vertices[5], vertices[4]);
     graph.insert(0, 1, vertices[4], vertices[8]); // E-I
     graph.insert(0, 1, vertices[8], vertices[4]);
 
-    // FµÄ±ß
+    // Fçš„è¾¹
     graph.insert(0, 1, vertices[5], vertices[6]); // F-G
     graph.insert(0, 1, vertices[6], vertices[5]);
     graph.insert(0, 1, vertices[5], vertices[9]); // F-J
@@ -116,22 +116,22 @@ void buildGraph2(GraphMatrix<char, int>& graph) {
     graph.insert(0, 1, vertices[5], vertices[8]); // F-I
     graph.insert(0, 1, vertices[8], vertices[5]);
 
-    // GµÄ±ß
+    // Gçš„è¾¹
     graph.insert(0, 1, vertices[6], vertices[10]); // G-K
     graph.insert(0, 1, vertices[10], vertices[6]);
 
-    // JµÄ±ß
+    // Jçš„è¾¹
     graph.insert(0, 1, vertices[9], vertices[10]); // J-K
     graph.insert(0, 1, vertices[10], vertices[9]);
 
-    // KµÄ±ß
+    // Kçš„è¾¹
     graph.insert(0, 1, vertices[10], vertices[11]); // K-L
     graph.insert(0, 1, vertices[11], vertices[10]);
 }
 
-// ´òÓ¡ÁÚ½Ó¾ØÕó
+// æ‰“å°é‚»æ¥çŸ©é˜µ
 void printAdjacencyMatrix(GraphMatrix<char, int>& graph) {
-    cout << "ÁÚ½Ó¾ØÕó:" << endl;
+    cout << "é‚»æ¥çŸ©é˜µ:" << endl;
     cout << "  ";
     for (int i = 0; i < graph.n; i++) {
         cout << graph.vertex(i) << " ";
@@ -153,18 +153,18 @@ void printAdjacencyMatrix(GraphMatrix<char, int>& graph) {
     cout << endl;
 }
 
-// ´òÓ¡BFS±éÀú½á¹û
+// æ‰“å°BFSéå†ç»“æœ
 void printBFSResult(GraphMatrix<char, int>& graph, int start) {
-    cout << "´Ó¶¥µã " << graph.vertex(start) << " ¿ªÊ¼µÄBFS±éÀúË³Ğò: ";
+    cout << "ä»é¡¶ç‚¹ " << graph.vertex(start) << " å¼€å§‹çš„BFSéå†é¡ºåº: ";
     graph.bfs(start);
 
-    // °´ÕÕ·¢ÏÖÊ±¼äÅÅĞòÊä³ö¶¥µã
+    // æŒ‰ç…§å‘ç°æ—¶é—´æ’åºè¾“å‡ºé¡¶ç‚¹
     Vector<pair<int, char>> vertices;
     for (int i = 0; i < graph.n; i++) {
         vertices.insert(vertices.size(), make_pair(graph.dTime(i), graph.vertex(i)));
     }
 
-    // °´·¢ÏÖÊ±¼äÅÅĞò
+    // æŒ‰å‘ç°æ—¶é—´æ’åº
     for (int i = 0; i < vertices.size(); i++) {
         for (int j = i + 1; j < vertices.size(); j++) {
             if (vertices[i].first > vertices[j].first) {
@@ -179,18 +179,18 @@ void printBFSResult(GraphMatrix<char, int>& graph, int start) {
     cout << endl;
 }
 
-// ´òÓ¡DFS±éÀú½á¹û
+// æ‰“å°DFSéå†ç»“æœ
 void printDFSResult(GraphMatrix<char, int>& graph, int start) {
-    cout << "´Ó¶¥µã " << graph.vertex(start) << " ¿ªÊ¼µÄDFS±éÀúË³Ğò: ";
+    cout << "ä»é¡¶ç‚¹ " << graph.vertex(start) << " å¼€å§‹çš„DFSéå†é¡ºåº: ";
     graph.dfs(start);
 
-    // °´ÕÕ·¢ÏÖÊ±¼äÅÅĞòÊä³ö¶¥µã
+    // æŒ‰ç…§å‘ç°æ—¶é—´æ’åºè¾“å‡ºé¡¶ç‚¹
     Vector<pair<int, char>> vertices;
     for (int i = 0; i < graph.n; i++) {
         vertices.insert(vertices.size(), make_pair(graph.dTime(i), graph.vertex(i)));
     }
 
-    // °´·¢ÏÖÊ±¼äÅÅĞò
+    // æŒ‰å‘ç°æ—¶é—´æ’åº
     for (int i = 0; i < vertices.size(); i++) {
         for (int j = i + 1; j < vertices.size(); j++) {
             if (vertices[i].first > vertices[j].first) {
@@ -205,7 +205,7 @@ void printDFSResult(GraphMatrix<char, int>& graph, int start) {
     cout << endl;
 }
 
-// DijkstraÓÅÏÈ¼¶¸üĞÂÆ÷
+// Dijkstraä¼˜å…ˆçº§æ›´æ–°å™¨
 template <typename Tv, typename Te>
 struct DijkstraPU {
     void operator()(Graph<Tv, Te>* g, int s, int w) {
@@ -218,7 +218,7 @@ struct DijkstraPU {
     }
 };
 
-// PrimÓÅÏÈ¼¶¸üĞÂÆ÷
+// Primä¼˜å…ˆçº§æ›´æ–°å™¨
 template <typename Tv, typename Te>
 struct PrimPU {
     void operator()(Graph<Tv, Te>* g, int s, int w) {
@@ -231,24 +231,24 @@ struct PrimPU {
     }
 };
 
-// ´òÓ¡×î¶ÌÂ·¾¶
+// æ‰“å°æœ€çŸ­è·¯å¾„
 void printShortestPaths(GraphMatrix<char, int>& graph, int start) {
-    cout << "´Ó¶¥µã " << graph.vertex(start) << " µ½¸÷¶¥µãµÄ×î¶ÌÂ·¾¶:" << endl;
+    cout << "ä»é¡¶ç‚¹ " << graph.vertex(start) << " åˆ°å„é¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„:" << endl;
 
-    // Ê¹ÓÃDijkstraËã·¨
+    // ä½¿ç”¨Dijkstraç®—æ³•
     graph.pfs(start, DijkstraPU<char, int>());
 
     for (int i = 0; i < graph.n; i++) {
         if (i != start) {
-            cout << "µ½¶¥µã " << graph.vertex(i) << ": ¾àÀë=" << graph.priority(i);
+            cout << "åˆ°é¡¶ç‚¹ " << graph.vertex(i) << ": è·ç¦»=" << graph.priority(i);
 
-            // ÖØ½¨Â·¾¶
+            // é‡å»ºè·¯å¾„
             Vector<char> path;
             for (int v = i; v != -1; v = graph.parent(v)) {
                 path.insert(0, graph.vertex(v));
             }
 
-            cout << ", Â·¾¶: ";
+            cout << ", è·¯å¾„: ";
             for (int j = 0; j < path.size(); j++) {
                 cout << path[j] << " ";
             }
@@ -258,39 +258,39 @@ void printShortestPaths(GraphMatrix<char, int>& graph, int start) {
     cout << endl;
 }
 
-// ´òÓ¡×îĞ¡Éú³ÉÊ÷
+// æ‰“å°æœ€å°ç”Ÿæˆæ ‘
 void printMST(GraphMatrix<char, int>& graph, int start) {
-    cout << "´Ó¶¥µã " << graph.vertex(start) << " ¿ªÊ¼µÄ×îĞ¡Éú³ÉÊ÷:" << endl;
+    cout << "ä»é¡¶ç‚¹ " << graph.vertex(start) << " å¼€å§‹çš„æœ€å°ç”Ÿæˆæ ‘:" << endl;
 
-    // Ê¹ÓÃPrimËã·¨
+    // ä½¿ç”¨Primç®—æ³•
     graph.pfs(start, PrimPU<char, int>());
 
     int totalWeight = 0;
     for (int i = 0; i < graph.n; i++) {
         if (graph.parent(i) != -1) {
-            cout << "±ß: " << graph.vertex(graph.parent(i)) << "-"
-                << graph.vertex(i) << ", È¨ÖØ: " << graph.weight(graph.parent(i), i) << endl;
+            cout << "è¾¹: " << graph.vertex(graph.parent(i)) << "-"
+                << graph.vertex(i) << ", æƒé‡: " << graph.weight(graph.parent(i), i) << endl;
             totalWeight += graph.weight(graph.parent(i), i);
         }
     }
-    cout << "×îĞ¡Éú³ÉÊ÷×ÜÈ¨ÖØ: " << totalWeight << endl << endl;
+    cout << "æœ€å°ç”Ÿæˆæ ‘æ€»æƒé‡: " << totalWeight << endl << endl;
 }
 
-// ¼ò»¯µÄË«Á¬Í¨·ÖÁ¿·ÖÎö
+// ç®€åŒ–çš„åŒè¿é€šåˆ†é‡åˆ†æ
 void analyzeBiconnectedComponents(GraphMatrix<char, int>& graph, int start) {
-    cout << "´Ó¶¥µã " << graph.vertex(start) << " ¿ªÊ¼µÄË«Á¬Í¨·ÖÁ¿·ÖÎö:" << endl;
+    cout << "ä»é¡¶ç‚¹ " << graph.vertex(start) << " å¼€å§‹çš„åŒè¿é€šåˆ†é‡åˆ†æ:" << endl;
 
-    // Ö´ĞĞDFS±éÀú
+    // æ‰§è¡ŒDFSéå†
     graph.dfs(start);
 
-    // »ùÓÚÍ¼½á¹¹µÄ¹Ø½Úµã·ÖÎö
+    // åŸºäºå›¾ç»“æ„çš„å…³èŠ‚ç‚¹åˆ†æ
     Vector<char> articulationPoints;
 
-    // ¼ì²éÃ¿¸ö¶¥µãÊÇ·ñÎª¹Ø½Úµã
+    // æ£€æŸ¥æ¯ä¸ªé¡¶ç‚¹æ˜¯å¦ä¸ºå…³èŠ‚ç‚¹
     for (int i = 0; i < graph.n; i++) {
         char currentVertex = graph.vertex(i);
 
-        // ¼ò»¯µÄÅĞ¶Ï£ºÈç¹û¶¥µãÓĞ¶à¸ö×ÓÊ÷£¬Ôò¿ÉÄÜÊÇ¹Ø½Úµã
+        // ç®€åŒ–çš„åˆ¤æ–­ï¼šå¦‚æœé¡¶ç‚¹æœ‰å¤šä¸ªå­æ ‘ï¼Œåˆ™å¯èƒ½æ˜¯å…³èŠ‚ç‚¹
         int componentCount = 0;
         for (int j = 0; j < graph.n; j++) {
             if (graph.parent(j) == i) {
@@ -298,16 +298,16 @@ void analyzeBiconnectedComponents(GraphMatrix<char, int>& graph, int start) {
             }
         }
 
-        // ¶ÔÓÚ¸ù½Úµã£¬ĞèÒªÖÁÉÙ2¸ö×ÓÊ÷²ÅÊÇ¹Ø½Úµã
-        // ¶ÔÓÚ·Ç¸ù½Úµã£¬ÓĞ×ÓÊ÷¾Í¿ÉÄÜÊÇ¹Ø½Úµã
+        // å¯¹äºæ ¹èŠ‚ç‚¹ï¼Œéœ€è¦è‡³å°‘2ä¸ªå­æ ‘æ‰æ˜¯å…³èŠ‚ç‚¹
+        // å¯¹äºéæ ¹èŠ‚ç‚¹ï¼Œæœ‰å­æ ‘å°±å¯èƒ½æ˜¯å…³èŠ‚ç‚¹
         if ((i == start && componentCount >= 2) || (i != start && componentCount >= 1)) {
-            // ½øÒ»²½¼ì²é£ºÈç¹ûÒÆ³ı¸Ã¶¥µã»áÔö¼ÓÁ¬Í¨·ÖÁ¿ÊıÁ¿£¬ÔòÊÇ¹Ø½Úµã
+            // è¿›ä¸€æ­¥æ£€æŸ¥ï¼šå¦‚æœç§»é™¤è¯¥é¡¶ç‚¹ä¼šå¢åŠ è¿é€šåˆ†é‡æ•°é‡ï¼Œåˆ™æ˜¯å…³èŠ‚ç‚¹
             bool isArticulation = false;
 
-            // ¼ò»¯µÄÅĞ¶Ï£º¼ì²é¸Ã¶¥µãµÄ¶ÈÊı
+            // ç®€åŒ–çš„åˆ¤æ–­ï¼šæ£€æŸ¥è¯¥é¡¶ç‚¹çš„åº¦æ•°
             int degree = graph.outDegree(i);
             if (degree > 1) {
-                // ¼ì²éÊÇ·ñÓĞ»Ø±ßÈÆ¹ı¸Ã¶¥µã
+                // æ£€æŸ¥æ˜¯å¦æœ‰å›è¾¹ç»•è¿‡è¯¥é¡¶ç‚¹
                 bool hasAlternativePath = false;
                 for (int j = 0; j < graph.n && !hasAlternativePath; j++) {
                     if (graph.exists(i, j)) {
@@ -331,62 +331,63 @@ void analyzeBiconnectedComponents(GraphMatrix<char, int>& graph, int start) {
         }
     }
 
-    // Êä³ö½á¹û
+    // è¾“å‡ºç»“æœ
     if (articulationPoints.size() > 0) {
-        cout << "¹Ø½Úµã: ";
+        cout << "å…³èŠ‚ç‚¹: ";
         for (int i = 0; i < articulationPoints.size(); i++) {
             cout << articulationPoints[i] << " ";
         }
         cout << endl;
     }
     else {
-        cout << "¹Ø½Úµã: ÎŞ" << endl;
+        cout << "å…³èŠ‚ç‚¹: æ— " << endl;
     }
 
     cout << endl;
 }
 
 int main() {
-    cout << "===== Í¼1·ÖÎö =====" << endl;
+    cout << "===== å›¾1åˆ†æ =====" << endl;
 
-    // ´´½¨Í¼1
+    // åˆ›å»ºå›¾1
     GraphMatrix<char, int> graph1;
     buildGraph1(graph1);
 
-    // (1) Êä³öÁÚ½Ó¾ØÕó
-    cout << "Í¼1µÄÁÚ½Ó¾ØÕó:" << endl;
+    // (1) è¾“å‡ºé‚»æ¥çŸ©é˜µ
+    cout << "å›¾1çš„é‚»æ¥çŸ©é˜µ:" << endl;
     printAdjacencyMatrix(graph1);
 
-    // (2) BFSºÍDFS
-    cout << "´ÓAµã³ö·¢µÄ±éÀú:" << endl;
-    printBFSResult(graph1, 0); // ´ÓAµã³ö·¢
+    // (2) BFSå’ŒDFS
+    cout << "ä»Aç‚¹å‡ºå‘çš„éå†:" << endl;
+    printBFSResult(graph1, 0); // ä»Aç‚¹å‡ºå‘
     printDFSResult(graph1, 0);
     cout << endl;
 
-    // (3) ×î¶ÌÂ·¾¶ºÍ×îĞ¡Ö§³ÅÊ÷
-    cout << "×î¶ÌÂ·¾¶ºÍ×îĞ¡Ö§³ÅÊ÷:" << endl;
+    // (3) æœ€çŸ­è·¯å¾„å’Œæœ€å°æ”¯æ’‘æ ‘
+    cout << "æœ€çŸ­è·¯å¾„å’Œæœ€å°æ”¯æ’‘æ ‘:" << endl;
     printShortestPaths(graph1, 0);
     printMST(graph1, 0);
 
-    cout << "===== Í¼2·ÖÎö =====" << endl;
+    cout << "===== å›¾2åˆ†æ =====" << endl;
 
-    // ´´½¨Í¼2
+    // åˆ›å»ºå›¾2
     GraphMatrix<char, int> graph2;
     buildGraph2(graph2);
 
-    // Êä³öÍ¼2µÄÁÚ½Ó¾ØÕóÒÔ±ãÑéÖ¤
-    cout << "Í¼2µÄÁÚ½Ó¾ØÕó:" << endl;
+    // è¾“å‡ºå›¾2çš„é‚»æ¥çŸ©é˜µä»¥ä¾¿éªŒè¯
+    cout << "å›¾2çš„é‚»æ¥çŸ©é˜µ:" << endl;
     printAdjacencyMatrix(graph2);
 
-    // (4) Ë«Á¬Í¨·ÖÁ¿·ÖÎö£¨´Ó²»Í¬Æğµã£©
-    cout << "Ë«Á¬Í¨·ÖÁ¿·ÖÎö:" << endl;
+    // (4) åŒè¿é€šåˆ†é‡åˆ†æï¼ˆä»ä¸åŒèµ·ç‚¹ï¼‰
+    cout << "åŒè¿é€šåˆ†é‡åˆ†æ:" << endl;
 
-    // ´Ó²»Í¬Æğµã½øĞĞ·ÖÎö
-    analyzeBiconnectedComponents(graph2, 0); // ´ÓA¿ªÊ¼
-    analyzeBiconnectedComponents(graph2, 2); // ´ÓC¿ªÊ¼  
-    analyzeBiconnectedComponents(graph2, 5); // ´ÓF¿ªÊ¼
+    // ä»ä¸åŒèµ·ç‚¹è¿›è¡Œåˆ†æ
+    analyzeBiconnectedComponents(graph2, 0); // ä»Aå¼€å§‹
+    analyzeBiconnectedComponents(graph2, 2); // ä»Cå¼€å§‹  
+    analyzeBiconnectedComponents(graph2, 5); // ä»Få¼€å§‹
 
-    cout << "ÊµÑéÍê³É£¡" << endl;
+    cout << "å®éªŒå®Œæˆï¼" << endl;
 
     return 0;
+
 }
