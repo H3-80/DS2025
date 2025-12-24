@@ -30,11 +30,11 @@ DS2025/
 
 ├── exp1/                # 实验一：线性数据结构应用
 
-│   └── main.cpp         # Huffman编码实现
+│   └── main.cpp         # 复数运算、排序、表达式计算器
 
 ├── exp2/                # 实验二：二叉树与表达式计算
 
-│   └── main.cpp         # 复数运算、排序、表达式计算器
+│   └── main.cpp         # Huffman编码实现
 
 ├── exp3/                # 实验三：图算法分析
 
@@ -48,10 +48,10 @@ DS2025/
 🚀 快速开始
 1. 编译运行
 方法一：逐个编译
-# 实验一：Huffman编码
+# 实验一：表达式计算器
 g++ -std=c++11 -I./MySTL exp1/main.cpp -o exp1 && ./exp1
 
-# 实验二：表达式计算器
+# 实验二：Huffman编码
 g++ -std=c++11 -I./MySTL exp2/main.cpp -o exp2 && ./exp2
 
 # 实验三：图算法
@@ -59,7 +59,7 @@ g++ -std=c++11 -I./MySTL exp3/main.cpp -o exp3 && ./exp3
 
 # 实验四：排序与NMS
 g++ -std=c++11 -I./MySTL exp4/main.cpp -o exp4 && ./exp4
-方法二：CMake（推荐）
+方法二：CMake
 mkdir build && cd build
 cmake .. && cmake --build .
 # 运行可执行文件（Windows/Linux下路径不同）
