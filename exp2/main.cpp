@@ -34,7 +34,7 @@ int main() {
     // 尝试在两个可能的位置读取文件
     string text = readTextFile("104.txt");
     if (text.empty()) {
-        text = readTextFile("MySTL/104.txt");
+        text = readTextFile("../MySTL/104.txt");
     }
     if (text.empty()) {
         cerr << "无法读取文本文件" << endl;
@@ -127,3 +127,4 @@ int main() {
     return 0;
 
 }
+
